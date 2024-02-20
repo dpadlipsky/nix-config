@@ -3,6 +3,7 @@
 {
   programs.waybar.enable = true;
 
+  # TODO: Convert to non-text based config
   xdg.configFile."waybar/config".text = ''
 {
     "modules-left": ["hyprland/workspaces", "hyprland/mode"],
@@ -45,6 +46,7 @@
 }
   '';
 
+  # TODO: Convert to non-text based config
   xdg.configFile."waybar/style.css".text = ''
 * {
     border: none;

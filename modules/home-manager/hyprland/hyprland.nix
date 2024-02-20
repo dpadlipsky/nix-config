@@ -6,6 +6,7 @@
     xwayland.enable = true;
   };
 
+  # TODO: Convert to non-text based config
   wayland.windowManager.hyprland.extraConfig = ''
     # See https://wiki.hyprland.org/Configuring/Monitors/
     monitor=DP-1,highrr,auto,1.3333

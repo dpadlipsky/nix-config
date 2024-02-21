@@ -27,21 +27,21 @@
   # release notes.
   home.stateVersion = "23.11";
 
-  home.packages = [
-    pkgs.vscode
-    pkgs.discord
-    pkgs.lm_sensors
-    pkgs.sublime
-    pkgs.spotify
-    pkgs.chromium
-    pkgs.firefox
-    pkgs.discord-screenaudio
-    pkgs.pulsemixer
-    pkgs.wireplumber
-    pkgs.xdg-desktop-portal-hyprland
-    pkgs.webcord
-    pkgs.neovim
-    pkgs.gh
+  home.packages = with pkgs; [
+    vscode
+    discord
+    lm_sensors
+    sublime
+    spotify
+    chromium
+    firefox
+    discord-screenaudio
+    pulsemixer
+    wireplumber
+    xdg-desktop-portal-hyprland
+    webcord
+    neovim
+    gh
   ];
 
   home.file = {

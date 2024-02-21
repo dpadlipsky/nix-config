@@ -21,7 +21,7 @@
     device = "nodev";
     useOSProber = true;
     efiSupport = true;
-    default = "saved";
+    default = "2";
     timeoutStyle = "countdown";
   };
 

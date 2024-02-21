@@ -39,6 +39,7 @@
     pkgs.xdg-desktop-portal-hyprland
     pkgs.webcord
     pkgs.neovim
+    pkgs.gh
   ];
 
   home.file = {

@@ -26,9 +26,12 @@
   };
 
   networking.hostName = "dpadlipsky";
+
   networking.networkmanager.enable = true;
   networking.wireless.enable = false;
   networking.wireless.userControlled.enable = true;
+
+  networking.firewall.enable = true;
 
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";

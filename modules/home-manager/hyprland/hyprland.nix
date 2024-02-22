@@ -10,6 +10,7 @@
     monitor = [
       "DP-1,highrr,auto,1.3333"
       "HDMI-A-1,preferred,auto,2"
+      "eDP-1,preferred,auto,2"
       ",preferred,auto,auto"
     ];
 
@@ -28,7 +29,7 @@
         touchpad = {
           natural_scroll = false;
         };
-        sensitivity = -0.5;
+        sensitivity = 0;
     };
 
     general = {

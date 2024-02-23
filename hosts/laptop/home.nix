@@ -7,14 +7,7 @@
   nixpkgs.config.allowUnfree = true;
 
   imports = [
-    ../../modules/home-manager/utils/rebuild-command.nix
-
-    ../../modules/home-manager/hyprland/hyprland.nix
-    ../../modules/home-manager/hyprland/hyprpaper.nix
-    ../../modules/home-manager/hyprland/waybar.nix
-    ../../modules/home-manager/hyprland/rofi.nix
-
-    ../../modules/home-manager/terminals/kitty.nix
+    ../../modules/home-manager
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -51,5 +44,19 @@
 
   home.sessionVariables = {
     EDITOR = "vim";
+  };
+
+  dpad = {
+    hostLabel = "laptop";
+
+    hyprland = {
+      enable = true;
+      sensitivity = 0;
+      animations.enable = false;
+    };
+
+    hyprpaper.enable = true;
+    rofi.enable = true;
+    waybar.enable = true;
   };
 }

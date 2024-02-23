@@ -95,7 +95,7 @@
       "$mainMod, SPACE, exec, rofi -show drun"
       "$mainMod, P, pseudo, # dwindle"
       "$mainMod, J, togglesplit, # dwindle"
-      "$mainMod, F, fullscreen, 1"
+      "$mainMod, F, fullscreen, 0"
       "$mainMod SHIFT, F, fakefullscreen, 1"
 
       # Move focus with mainMod + arrow keys
@@ -109,6 +109,10 @@
       "$mainMod SHIFT, right, movewindow, r"
       "$mainMod SHIFT, up, movewindow, u"
       "$mainMod SHIFT, down, movewindow, d"
+
+      # Move to left/right workspaces with brackets
+      "$mainMod, code:34, workspace, -1"
+      "$mainMod, code:35, workspace, +1"
 
       # Switch workspaces with mainMod + [0-9]
       "$mainMod, 1, workspace, 1"

@@ -60,7 +60,7 @@
   users.users.dpadlipsky = {
     isNormalUser = true;
     description = "David Padlipsky";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel"  "video" ];
   };
 
   # Allow unfree packages
@@ -79,6 +79,8 @@
     nix-index
     acpi
   ];
+
+  programs.light.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

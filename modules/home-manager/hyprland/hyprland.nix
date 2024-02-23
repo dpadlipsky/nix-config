@@ -57,7 +57,7 @@
     };
 
     animations = {
-        enabled = true;
+        enabled = false;
 
         bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
         animation = [
@@ -95,7 +95,9 @@
       "$mainMod, SPACE, exec, rofi -show drun"
       "$mainMod, P, pseudo, # dwindle"
       "$mainMod, J, togglesplit, # dwindle"
-      "$mainMod, F, fullscreen, 0"
+      "$mainMod CTRL, F, fullscreen, 0"
+      # TODO: Once 0.36.0 comes out change this to 2 and remove Meta + Ctrl + F shortcut
+      "$mainMod, F, fullscreen, 1"
       "$mainMod SHIFT, F, fakefullscreen, 1"
 
       # Move focus with mainMod + arrow keys
@@ -145,6 +147,12 @@
       # Scroll through existing workspaces with mainMod + scroll
       "$mainMod, mouse_down, workspace, e+1"
       "$mainMod, mouse_up, workspace, e-1"
+    ];
+
+    bindr = [
+      # Brightness controls
+      ", XF86MonBrightnessUp, exec, light -A 5"
+      ", XF86MonBrightnessDown, exec, light -U 5"
     ];
 
     bindm = [

@@ -6,7 +6,6 @@
 
       inputs.home-manager.nixosModules.default
 
-      # TODO: Why doesn't NVIDIA module work?
       ../../modules/nixos/hyprland.nix
       ../../modules/nixos/audio.nix
       ../../modules/nixos/fonts.nix
@@ -14,7 +13,6 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # Bootloader.
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub = {
     enable = true;
@@ -79,6 +77,7 @@
     gcc
     stdenv
     nix-index
+    acpi
   ];
 
   # This value determines the NixOS release from which the default
@@ -95,4 +94,35 @@
       "dpadlipsky" = import ./home.nix;
     };
   };
+
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
+
+  # ***************************************************************
+  # TODO: Cannot get dGPU to work nicely, will revisit later, iGPU
+  #       is good enough for most things.
+  # ***************************************************************
+
+  # boot.blacklistedKernelModules = [ "nouveau" "nv" "rivafb" "nvidiafb" "rivatv" ];
+
+  # services.xserver.videoDrivers = ["nvidia"];
+
+  # hardware.nvidia = {
+  #   modesetting.enable = true;
+  #   open = false;
+
+  #   nvidiaSettings = true;
+
+  #   prime = {
+  #     offload = {
+  #       enable = true;
+  #       enableOffloadCmd = true;
+  #     };
+  #     intelBusId = "PCI:0:2:0";
+  #     nvidiaBusId = "PCI:1:0:0";
+  #   };
+  # };
 }

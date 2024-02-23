@@ -36,12 +36,14 @@
     chromium
     firefox
     discord-screenaudio
-    pulsemixer
     wireplumber
     xdg-desktop-portal-hyprland
     webcord
     neovim
     gh
+
+    pulsemixer
+    pavucontrol
   ];
 
   home.file = {

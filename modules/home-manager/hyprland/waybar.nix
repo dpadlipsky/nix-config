@@ -6,27 +6,19 @@
   # TODO: Convert to non-text based config
   xdg.configFile."waybar/config".text = ''
 {
-    "modules-left": ["hyprland/workspaces", "hyprland/mode"],
-    "modules-center": ["clock", "idle_inhibitor"],
-    "modules-right": ["tray", "custom/scratchpad-indicator", "pulseaudio"],
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        },
-    },
-    "tray": {
-        "icon-size": 15,
-        "spacing": 10
-    },
+    "layer": "bottom",
+    "margin": "5 5 0 5",
+    "height": 30,
+
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio"],
     "clock": {
-        // "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        // "format-alt": "{:%Y-%m-%d}"
-		"on-click": "gnome-calendar"
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:%a, %d %b, %I:%M %p}"
     },
     "pulseaudio": {
-        "format": "{volume}% {icon} ",
+        "format": "{volume}% {icon} {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": "0% {icon} ",
@@ -41,7 +33,8 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pulsemixer"
+        "on-click": "hyprctl dispatch exec [floating] pavucontrol",
+        "min-length": 13,
     },
 }
   '';
@@ -50,88 +43,69 @@
   xdg.configFile."waybar/style.css".text = ''
 * {
     border: none;
-    font-family: Font Awesome, Roboto, Arial, sans-serif;
-    font-size: 13px;
-    color: #ffffff;
-    border-radius: 20px;
+    border-radius: 0;
+    font-family: Liberation Mono;
+    min-height: 20px;
 }
 
-window {
-	/*font-weight: bold;*/
-}
 window#waybar {
-    background: rgba(0, 0, 0, 0);
+    background: transparent;
 }
-/*-----module groups----*/
-.modules-right {
-	background-color: rgba(0,43,51,0.85);
-    margin: 2px 10px 0 0;
+
+window#waybar.hidden {
+    opacity: 0.2;
 }
-.modules-center {
-	background-color: rgba(0,43,51,0.85);
-    margin: 2px 0 0 0;
+
+#workspaces {
+    margin-right: 8px;
+    border-radius: 10px;
+    transition: all 0.5s ease-out;
+    background: rgba(56, 60, 74, .3);
 }
-.modules-left {
-    margin: 2px 0 0 5px;
-	background-color: rgba(0,119,179,0.6);
-}
-/*-----modules indv----*/
+
 #workspaces button {
-    padding: 1px 5px;
-    background-color: transparent;
+    transition: none;
+    color: #7c818c;
+    background: transparent;
+    padding: 5px;
+    font-size: 18px;
 }
+
 #workspaces button:hover {
+    transition: none;
     box-shadow: inherit;
-	background-color: rgba(200, 67, 124, 1);
+    text-shadow: inherit;
+    border-radius: inherit;
+    color: #383c4a;
+    background: rgba(56, 60, 74, .3);
 }
 
-#workspaces button.focused {
-	background-color: rgba(200, 67, 124, 1);
+#workspaces button.focused,
+#workspaces button.active {
+    color: white;
 }
 
-#clock,
-#battery,
-#cpu,
-#memory,
-#temperature,
-#network,
-#pulseaudio,
-#custom-media,
-#tray,
-#mode,
-#custom-power,
-#custom-menu,
-#idle_inhibitor {
-    padding: 0 10px;
+#clock {
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 10px;
+    transition: none;
+    color: #ffffff;
+    background: rgba(56, 60, 74, .3);
 }
-#mode {
-    color: #cc3436;
-    font-weight: bold;
+
+#pulseaudio {
+    padding-left: 0;
+    padding-right: 0;
+    border-radius: 10px;
+    transition: none;
+    color: #ffffff;
+    background: rgba(56, 60, 74, .3);
 }
-#custom-power {
-    background-color: rgba(0,119,179,0.6);
-    border-radius: 100px;
-    margin: 5px 5px;
-    padding: 1px 1px 1px 6px;
-}
-/*-----Indicators----*/
-#idle_inhibitor.activated {
-    color: #2dcc36;
-}
+
 #pulseaudio.muted {
-    color: #cc3436;
-}
-#battery.charging {
-    color: #2dcc36;
-}
-#battery.warning:not(.charging) {
-	color: #e6e600;
-}
-#battery.critical:not(.charging) {
-    color: #cc3436;
-}
-#temperature.critical {
-    color: #cc3436;
+    background-color: #90b1b1;
+    color: #2a5c45;
 }
   '';
 }

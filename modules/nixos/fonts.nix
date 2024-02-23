@@ -4,5 +4,6 @@
 {
   fonts.packages = with pkgs; [
     font-awesome
+    liberation_ttf
   ];
 }

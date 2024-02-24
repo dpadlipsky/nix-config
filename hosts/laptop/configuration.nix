@@ -21,8 +21,9 @@
     efiSupport = true;
     default = "SAVED";
     timeoutStyle = "countdown";
+    gfxmodeEfi = "1024x768";
   };
-  boot.loader.grub.gfxmodeEfi = "1024x768";
+  boot.kernelParams = ["quiet" "splash" "loglevel=0"];
 
   networking.hostName = "dpadlipsky";
 

@@ -117,6 +117,7 @@ in
         "$mainMod, F, fullscreen, 1"
         "$mainMod SHIFT, F, fakefullscreen, 1"
         "$mainMode, L, exec, swaylock"
+        "$mainMode SHIFT, L, exec, hyprctl dispatch exit"
 
         # Move focus with mainMod + arrow keys
         "$mainMod, left, movefocus, l"

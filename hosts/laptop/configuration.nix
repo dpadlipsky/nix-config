@@ -22,6 +22,7 @@
     default = "SAVED";
     timeoutStyle = "countdown";
   };
+  boot.loader.grub.gfxmodeEfi = "1024x768";
 
   networking.hostName = "dpadlipsky";
 
@@ -54,7 +55,16 @@
     enable = true;
     xkb.layout = "us";
     xkb.variant = "";
+    # Needed to fix login screen scaling
+    dpi = 192;
     displayManager.sddm.enable = true;
+    displayManager.sddm.enableHidpi = true;
+    displayManager.sddm.settings = {
+      Autologin = {
+        user = "dpadlipsky";
+        session = "hyprland";
+      };
+    };
   };
 
   users.users.dpadlipsky = {

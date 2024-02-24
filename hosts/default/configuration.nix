@@ -91,4 +91,7 @@
       "dpadlipsky" = import ./home.nix;
     };
   };
+
+  # Needed for swaylock
+  security.pam.services.swaylock = {};
 }

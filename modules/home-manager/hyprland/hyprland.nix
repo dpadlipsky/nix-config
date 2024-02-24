@@ -116,6 +116,7 @@ in
         # TODO: Once 0.36.0 comes out change this to 2 and remove Meta + Ctrl + F shortcut
         "$mainMod, F, fullscreen, 1"
         "$mainMod SHIFT, F, fakefullscreen, 1"
+        "$mainMode, L, exec, swaylock"
 
         # Move focus with mainMod + arrow keys
         "$mainMod, left, movefocus, l"

@@ -56,5 +56,6 @@
     hyprpaper.enable = true;
     rofi.enable = true;
     waybar.enable = true;
+    swaylock.enable = true;
   };
 }

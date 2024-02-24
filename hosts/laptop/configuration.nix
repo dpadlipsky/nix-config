@@ -97,6 +97,9 @@
     };
   };
 
+  # Needed for swaylock
+  security.pam.services.swaylock = {};
+
   hardware.opengl = {
     enable = true;
     driSupport = true;

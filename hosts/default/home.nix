@@ -45,6 +45,8 @@
   };
 
   dpad = {
+    cursor.enable = true;
+
     hostLabel = "default";
 
     hyprland = {

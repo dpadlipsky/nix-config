@@ -47,6 +47,8 @@
   };
 
   dpad = {
+    cursor.enable = true;
+
     hostLabel = "laptop";
 
     hyprland = {

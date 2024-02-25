@@ -131,11 +131,6 @@
     libva
   ];
 
-  # ***************************************************************
-  # TODO: Cannot get dGPU to work nicely, will revisit later, iGPU
-  #       is good enough for most things.
-  # ***************************************************************
-
   boot.blacklistedKernelModules = [ "nouveau" "nv" "rivafb" "nvidiafb" "rivatv" ];
 
   services.xserver.videoDrivers = ["intel" "nvidia"];

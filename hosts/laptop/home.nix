@@ -26,7 +26,6 @@
     lm_sensors
     sublime
     spotify
-    chromium
     firefox
     discord-screenaudio
     wireplumber
@@ -44,6 +43,13 @@
   home.sessionVariables = {
     EDITOR = "vim";
   };
+
+  # Disable GPU in chromium due to incompatibility w/ nvidia offloading
+  # TODO: Figure out why
+  programs.chromium.enable = true;
+  programs.chromium.commandLineArgs = [
+    "--disable-gpu"
+  ];
 
   dpad = {
     cursor.enable = true;

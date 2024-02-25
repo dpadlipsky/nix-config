@@ -30,7 +30,6 @@
     firefox
     discord-screenaudio
     wireplumber
-    xdg-desktop-portal-hyprland
     webcord
     neovim
     gh

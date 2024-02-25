@@ -23,7 +23,11 @@
     timeoutStyle = "countdown";
     gfxmodeEfi = "1024x768";
   };
-  boot.kernelParams = ["quiet" "splash" "loglevel=0"];
+  boot.kernelParams = ["quiet" "splash" "loglevel=0" "acpi_rev_override"];
+  boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
+
+  # This will save you money and possibly your life!
+  services.thermald.enable = true;
 
   networking.hostName = "dpadlipsky";
 
@@ -76,6 +80,7 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.nvidia.acceptLicense = true;
 
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
@@ -89,9 +94,11 @@
     stdenv
     nix-index
     acpi
+    lshw
   ];
 
   programs.light.enable = true;
+  programs.steam.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -116,29 +123,36 @@
     driSupport = true;
     driSupport32Bit = true;
   };
+  hardware.opengl.extraPackages = with pkgs; [
+    intel-media-driver
+    vaapiIntel
+    vaapiVdpau
+    libvdpau-va-gl
+    libva
+  ];
 
   # ***************************************************************
   # TODO: Cannot get dGPU to work nicely, will revisit later, iGPU
   #       is good enough for most things.
   # ***************************************************************
 
-  # boot.blacklistedKernelModules = [ "nouveau" "nv" "rivafb" "nvidiafb" "rivatv" ];
+  boot.blacklistedKernelModules = [ "nouveau" "nv" "rivafb" "nvidiafb" "rivatv" ];
 
-  # services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = ["intel" "nvidia"];
 
-  # hardware.nvidia = {
-  #   modesetting.enable = true;
-  #   open = false;
+  hardware.nvidia = {
+    modesetting.enable = true;
+    open = false;
 
-  #   nvidiaSettings = true;
-
-  #   prime = {
-  #     offload = {
-  #       enable = true;
-  #       enableOffloadCmd = true;
-  #     };
-  #     intelBusId = "PCI:0:2:0";
-  #     nvidiaBusId = "PCI:1:0:0";
-  #   };
-  # };
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    prime = {
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
+  };
 }

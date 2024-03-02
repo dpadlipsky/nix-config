@@ -36,6 +36,7 @@
     neovim
     gh
     evtest
+    hid-tools
   ];
 
   home.file = {

@@ -35,6 +35,7 @@
     webcord
     neovim
     gh
+    evtest
   ];
 
   home.file = {
